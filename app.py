@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get("/")
 def home():
     return {
-        "message": "My first deployed API is working!"
+        "message": "Hello from my first production deployment!"
     }
 
 
