@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -17,10 +20,11 @@ def hello(name: str):
         "message": f"Hello {name}!"
     }
 
+
 @app.get("/secret")
 def secret():
     message = os.getenv("SECRET_MESSAGE", "Secret message not configured")
-    
+
     return {
         "message": message
     }
