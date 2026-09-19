@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import os
 
 app = FastAPI()
 
@@ -14,4 +15,12 @@ def home():
 def hello(name: str):
     return {
         "message": f"Hello {name}!"
+    }
+
+@app.get("/secret")
+def secret():
+    message = os.getenv("SECRET_MESSAGE", "Secret message not configured")
+    
+    return {
+        "message": message
     }
